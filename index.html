@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- ENTWURF -->
+  <title>[NAME] – Handgedrechselte Holzschalen</title>
+  <meta name="description" content="Handgedrechselte Schalen aus einheimischem Holz: Nussbaum, Kirsche, Esche, Ahorn und weitere. Jede Schale ein Einzelstück, Anfrage per E-Mail.">
+  <link rel="canonical" href="https://BENUTZERNAME.github.io/REPO/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_CH">
+  <meta property="og:site_name" content="[NAME]">
+  <meta property="og:title" content="[NAME] – Handgedrechselte Holzschalen">
+  <meta property="og:description" content="Schalen aus einheimischem Holz, von Hand gedrechselt. Jede ein Einzelstück.">
+  <meta property="og:url" content="https://BENUTZERNAME.github.io/REPO/">
+  <meta property="og:image" content="https://BENUTZERNAME.github.io/REPO/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Gedrechselte Holzschale vor hellem Hintergrund">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="[NAME] – Handgedrechselte Holzschalen">
+  <meta name="twitter:description" content="Schalen aus einheimischem Holz, von Hand gedrechselt. Jede ein Einzelstück.">
+  <meta name="twitter:image" content="https://BENUTZERNAME.github.io/REPO/images/og-image.jpg">
+
+  <meta name="theme-color" content="#F4F0E8">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="data/schalen.json" as="fetch" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/config.js"></script>
+  <script src="js/nav.js" defer></script>
+  <script src="js/feed.js" defer></script>
+</head>
+<body>
+  <a class="sprung" href="#inhalt">Zum Inhalt</a>
+
+  <header class="kopf">
+    <a class="wortmarke" href="./">[NAME]</a>
+    <button class="menue-knopf" type="button" aria-expanded="false" aria-controls="menue">Menü</button>
+    <nav class="menue" id="menue" aria-label="Hauptnavigation">
+      <ul>
+        <li><a href="./" aria-current="page">Schalen</a></li>
+        <li><a href="werkstatt.html">Werkstatt</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="inhalt">
+    <h1 class="vh">Handgedrechselte Holzschalen</h1>
+
+    <nav class="filter" aria-label="Schalen filtern">
+      <ul>
+        <li><a href="./" data-status="alle">Alle</a></li>
+        <li><a href="?status=verfuegbar" data-status="verfuegbar">Verfügbar</a></li>
+        <li><a href="?status=verkauft" data-status="verkauft">Verkauft</a></li>
+      </ul>
+    </nav>
+
+    <div class="feed" id="feed"></div>
+
+    <noscript>
+      <!-- ENTWURF -->
+      <p class="text">Die Übersicht der Schalen braucht JavaScript. Anfragen nehme ich gern per E-Mail entgegen: [EMAIL]</p>
+    </noscript>
+  </main>
+
+  <footer class="fuss">
+    <p>© [NAME]</p>
+    <p><a href="kontakt.html#impressum">Impressum</a> · <a href="kontakt.html#datenschutz">Datenschutz</a></p>
+  </footer>
+</body>
+</html>
