@@ -14,6 +14,7 @@ Reines HTML, CSS und JavaScript, kein Build-Schritt, keine externen Abhängigkei
 | `images/schalen/<id>/` | Bilder je Schale in drei Breiten |
 | `css/style.css` | Gestaltung; Farben und Schriften als Variablen ganz oben |
 | `js/config.js` | Basis-URL, Name und E-Mail-Adresse |
+| `fonts/` | Selbst gehostete Schriften mit Lizenztexten |
 | `scripts/` | Hilfsskripte für Bilder und Domainwechsel |
 | `originale/` | Originalfotos, werden nicht veröffentlicht (`.gitignore`) |
 
@@ -143,4 +144,4 @@ Hinweis: Suchmaschinen lesen `robots.txt` nur im Wurzelverzeichnis einer Domain.
 
 ## Gestaltung anpassen
 
-Farben, Schriften und Abstände stehen als CSS-Variablen am Anfang von `css/style.css`. Es werden Systemschriften verwendet, es wird nichts von fremden Servern geladen.
+Farben, Schriften und Abstände stehen als CSS-Variablen am Anfang von `css/style.css`. Die Schriften Source Serif 4 (Titel) und Public Sans (Text) liegen als WOFF2-Dateien in `fonts/` und werden vom eigenen Server geladen, nichts kommt von fremden Servern. Beide stehen unter der SIL Open Font License, die Lizenztexte liegen daneben.
