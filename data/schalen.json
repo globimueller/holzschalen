@@ -1,0 +1,131 @@
+[
+  {
+    "id": "014",
+    "titel": "Schale Nr. 014",
+    "holzart": "Nussbaum",
+    "herkunft": "Domleschg, Graubünden",
+    "durchmesser_cm": 28,
+    "hoehe_cm": 9,
+    "preis_chf": 240,
+    "status": "verfuegbar",
+    "beschrieb": "Weite Schale aus dem Stamm eines alten Hofbaums. Der Übergang vom hellen Splint zum dunklen Kern läuft quer durch die Schale.",
+    "bilder": [
+      { "datei": "01.webp", "alt": "Dunkle Nussbaumschale von der Seite auf hellem Grund", "legende": "Aussenform nach dem zweiten Ölen" },
+      { "datei": "02.webp", "alt": "Blick von oben in die Nussbaumschale mit sichtbaren Jahrringen", "legende": "Blick in die Schale" },
+      { "datei": "03.webp", "alt": "Nahaufnahme der Maserung am Rand der Nussbaumschale", "legende": "Splint und Kern am Rand" }
+    ],
+    "datum": "2026-11-01"
+  },
+  {
+    "id": "013",
+    "titel": "Schale Nr. 013",
+    "holzart": "Kirsche",
+    "herkunft": "Maienfeld, Bündner Herrschaft",
+    "durchmesser_cm": 22,
+    "hoehe_cm": 8,
+    "preis_chf": 180,
+    "status": "verfuegbar",
+    "beschrieb": "Kirschbaum aus einem Obstgarten, nass gedrechselt und beim Trocknen leicht oval geworden. Das Holz dunkelt im Licht rötlich nach.",
+    "bilder": [
+      { "datei": "01.webp", "alt": "Rötliche Kirschholzschale von der Seite auf hellem Grund", "legende": "Nass gedrechselt, leicht oval getrocknet" },
+      { "datei": "02.webp", "alt": "Blick von oben in die Kirschholzschale", "legende": "Innenseite, geölt" }
+    ],
+    "datum": "2026-10-18"
+  },
+  {
+    "id": "012",
+    "titel": "Schale Nr. 012",
+    "holzart": "Esche",
+    "herkunft": "Safiental, Graubünden",
+    "durchmesser_cm": 32,
+    "hoehe_cm": 11,
+    "preis_chf": 290,
+    "status": "verkauft",
+    "beschrieb": "Grosse Schale aus heller Esche mit kräftig gezeichneten Jahrringen. Gedacht für Brot oder Obst.",
+    "bilder": [
+      { "datei": "01.webp", "alt": "Helle Eschenschale von der Seite auf hellem Grund", "legende": "Fertig geölt, vor dem Verpacken" }
+    ],
+    "datum": "2026-10-04"
+  },
+  {
+    "id": "011",
+    "titel": "Schale Nr. 011",
+    "holzart": "Bergahorn",
+    "herkunft": "Surselva, Graubünden",
+    "durchmesser_cm": 18,
+    "hoehe_cm": 7,
+    "preis_chf": 140,
+    "status": "verfuegbar",
+    "beschrieb": "Kleine, dünnwandige Schale aus fast weissem Bergahorn. Die feine Riegelung zeigt sich erst im Streiflicht.",
+    "bilder": [
+      { "datei": "01.webp", "alt": "Helle Ahornschale von der Seite auf hellem Grund", "legende": "Wandstärke vier Millimeter" },
+      { "datei": "02.webp", "alt": "Blick von oben in die Ahornschale", "legende": "Blick in die Schale" },
+      { "datei": "03.webp", "alt": "Nahaufnahme der feinen Maserung im Ahornholz", "legende": "Riegelung im Streiflicht" }
+    ],
+    "datum": "2026-09-20"
+  },
+  {
+    "id": "010",
+    "titel": "Schale Nr. 010",
+    "holzart": "Ulme",
+    "herkunft": "Churer Rheintal, Graubünden",
+    "durchmesser_cm": 26,
+    "hoehe_cm": 10,
+    "preis_chf": 260,
+    "status": "verfuegbar",
+    "beschrieb": "Ulme ist selten geworden. Dieses Stück stammt von einem Baum, der dem Ulmensterben zum Opfer fiel, und zeigt die typische gefiederte Zeichnung.",
+    "bilder": [
+      { "datei": "01.webp", "alt": "Braune Ulmenschale von der Seite auf hellem Grund", "legende": "Nach dem Fertigdrehen, noch ungeölt" },
+      { "datei": "02.webp", "alt": "Nahaufnahme der gefiederten Maserung im Ulmenholz", "legende": "Gefiederte Zeichnung im Boden" }
+    ],
+    "datum": "2026-09-06"
+  },
+  {
+    "id": "009",
+    "titel": "Schale Nr. 009",
+    "holzart": "Arve",
+    "herkunft": "Oberengadin, Graubünden",
+    "durchmesser_cm": 24,
+    "hoehe_cm": 8,
+    "preis_chf": 190,
+    "status": "verkauft",
+    "beschrieb": "Leichte Schale aus Arvenholz mit eingewachsenen dunklen Ästen. Sie duftet noch lange nach Harz.",
+    "bilder": [
+      { "datei": "01.webp", "alt": "Helle Arvenschale von der Seite auf hellem Grund", "legende": "Gewachst, nicht geölt" }
+    ],
+    "datum": "2026-08-23"
+  },
+  {
+    "id": "008",
+    "titel": "Schale Nr. 008",
+    "holzart": "Birnbaum",
+    "herkunft": "Domleschg, Graubünden",
+    "durchmesser_cm": 20,
+    "hoehe_cm": 6,
+    "preis_chf": 170,
+    "status": "verfuegbar",
+    "beschrieb": "Flache Schale aus dichtem, gleichmässigem Birnbaumholz. Die Oberfläche ist so fein, dass sie fast ohne Poren auskommt.",
+    "bilder": [
+      { "datei": "01.webp", "alt": "Flache, rosabraune Birnbaumschale von der Seite auf hellem Grund", "legende": "Flache Form mit schmalem Fuss" },
+      { "datei": "02.webp", "alt": "Blick von oben in die Birnbaumschale", "legende": "Blick in die Schale" }
+    ],
+    "datum": "2026-08-09"
+  },
+  {
+    "id": "007",
+    "titel": "Schale Nr. 007",
+    "holzart": "Eiche",
+    "herkunft": "Fläsch, Bündner Herrschaft",
+    "durchmesser_cm": 30,
+    "hoehe_cm": 12,
+    "preis_chf": 320,
+    "status": "verkauft",
+    "beschrieb": "Schwere, tiefe Schale aus Eiche mit sichtbaren Markstrahlen. Ein Trocknungsriss am Rand wurde belassen.",
+    "bilder": [
+      { "datei": "01.webp", "alt": "Tiefe Eichenschale von der Seite auf hellem Grund", "legende": "Ein Jahr getrocknet, dann fertig gedreht" },
+      { "datei": "02.webp", "alt": "Blick von oben in die Eichenschale", "legende": "Blick in die Schale" },
+      { "datei": "03.webp", "alt": "Nahaufnahme der Maserung im Eichenholz", "legende": "Markstrahlen im Boden" }
+    ],
+    "datum": "2026-07-26"
+  }
+]
