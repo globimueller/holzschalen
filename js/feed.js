@@ -4,13 +4,15 @@
 
   var SITE = window.SITE || {};
   var BREITEN = [800, 1400, 2000];
-  var SIZES = "(min-width: 900px) 50vw, 100vw";
+  // Muss mit SIZES in scripts/feed-einbetten.py übereinstimmen
+  var SIZES = "(min-width: 900px) 40vw, (min-width: 560px) and (min-aspect-ratio: 4/3) 40vw, 100vw";
   var STATUS = ["verfuegbar", "verkauft"];
 
   var feed = document.getElementById("feed");
   if (!feed) return;
 
   var filterLinks = document.querySelectorAll(".filter a");
+  var statusZeile = document.getElementById("feed-status");
   var schalen = [];
   var ruhig = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -226,6 +228,26 @@
       anfrage.href = mailtoLink(schale);
       anfrage.setAttribute("aria-label", schale.titel + " per E-Mail anfragen");
       angaben.appendChild(anfrage);
+
+      // Für alle ohne eingerichtetes Mailprogramm: Adresse zum Kopieren
+      if (SITE.email) {
+        var alternative = el("p", "anfrage-alternative", "Kein Mailprogramm? Adresse kopieren: ");
+        var kopieren = el("button", "kopieren", SITE.email);
+        kopieren.type = "button";
+        kopieren.setAttribute("aria-label", "E-Mail-Adresse " + SITE.email + " kopieren");
+        var rueckmeldung = el("span");
+        rueckmeldung.setAttribute("role", "status");
+        kopieren.addEventListener("click", function () {
+          if (!navigator.clipboard) return;
+          navigator.clipboard.writeText(SITE.email).then(function () {
+            rueckmeldung.textContent = " – kopiert";
+            window.setTimeout(function () { rueckmeldung.textContent = ""; }, 2500);
+          });
+        });
+        alternative.appendChild(kopieren);
+        alternative.appendChild(rueckmeldung);
+        angaben.appendChild(alternative);
+      }
     }
 
     artikel.appendChild(angaben);
@@ -259,6 +281,13 @@
       teil.appendChild(baueEintrag(schale, index === 0));
     });
     feed.replaceChildren(teil);
+
+    // Für Screenreader ansagen, wie viele Schalen der Filter zeigt
+    if (statusZeile) {
+      statusZeile.textContent = auswahl.length === 1
+        ? "1 Schale angezeigt"
+        : auswahl.length + " Schalen angezeigt";
+    }
   }
 
   filterLinks.forEach(function (link) {
@@ -275,6 +304,8 @@
   /* ---------- Strukturierte Daten ---------- */
 
   function schreibeJsonLd() {
+    // Fest eingebettete Daten (scripts/feed-einbetten.py) haben Vorrang
+    if (document.getElementById("schalen-jsonld")) return;
     var basis = SITE.basisUrl || "";
     var produkte = schalen.filter(function (schale) {
       return schale.status === "verfuegbar";
@@ -318,16 +349,26 @@
       schalen = daten.slice().sort(function (a, b) {
         return String(b.datum).localeCompare(String(a.datum));
       });
+
+      // Direktlink auf eine Schale (#schale-012): Ist sie ausgefiltert, den Filter aufheben
+      var marke = window.location.hash.slice(1);
+      var gemeint = schalen.filter(function (schale) {
+        return "schale-" + schale.id === marke;
+      })[0];
+      var status = statusAusUrl();
+      if (gemeint && status !== "alle" && gemeint.status !== status) {
+        window.history.replaceState(null, "", window.location.pathname + window.location.hash);
+      }
+
       rendere();
       schreibeJsonLd();
 
-      // Direktlink auf eine Schale (#schale-014) nach dem Rendern anspringen
-      if (window.location.hash) {
-        var ziel = document.getElementById(window.location.hash.slice(1));
+      if (marke) {
+        var ziel = document.getElementById(marke);
         if (ziel) ziel.scrollIntoView();
       }
-    })
-    .catch(function () {
+    }, function () {
+      // Nur Ladefehler landen hier; Fehler beim Aufbau erscheinen in der Konsole
       feed.replaceChildren(el("p", "meldung",
         "Die Schalen konnten nicht geladen werden. Bitte die Seite neu laden."));
     });

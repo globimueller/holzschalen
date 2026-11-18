@@ -26,6 +26,10 @@
     knopf.setAttribute("aria-expanded", String(offen));
     knopf.textContent = offen ? "Schliessen" : "Menü";
     document.body.classList.toggle("menue-offen", offen);
+    // Inhalt hinter dem offenen Menü für Tastatur und Screenreader sperren
+    document.querySelectorAll("main, .fuss").forEach(function (teil) {
+      teil.inert = offen;
+    });
   }
 
   knopf.addEventListener("click", function () {
