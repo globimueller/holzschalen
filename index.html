@@ -24,7 +24,9 @@
   <meta name="twitter:image" content="https://globimueller.github.io/holzschalen/images/og-image.jpg">
 
   <meta name="theme-color" content="#F4F0E8">
+  <link rel="icon" href="images/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <link rel="preload" href="data/schalen.json" as="fetch" crossorigin>
   <link rel="preload" href="fonts/public-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -32,6 +34,9 @@
   <script src="js/config.js"></script>
   <script src="js/nav.js" defer></script>
   <script src="js/feed.js" defer></script>
+  <!-- JSONLD:START (erzeugt von scripts/feed-einbetten.py, nicht von Hand ändern) -->
+  <script type="application/ld+json" id="schalen-jsonld">{"@context":"https://schema.org","@graph":[{"@type":"Product","@id":"https://globimueller.github.io/holzschalen/#schale-014","name":"Schale Nr. 014 – Nussbaum","description":"Weite Schale aus dem Stamm eines alten Hofbaums. Der Übergang vom hellen Splint zum dunklen Kern läuft quer durch die Schale.","material":"Nussbaum","image":["https://globimueller.github.io/holzschalen/images/schalen/014/01-1400.webp","https://globimueller.github.io/holzschalen/images/schalen/014/02-1400.webp","https://globimueller.github.io/holzschalen/images/schalen/014/03-1400.webp"],"brand":{"@type":"Brand","name":"[NAME]"},"offers":{"@type":"Offer","url":"https://globimueller.github.io/holzschalen/#schale-014","price":240,"priceCurrency":"CHF","availability":"https://schema.org/InStock","itemCondition":"https://schema.org/NewCondition"}},{"@type":"Product","@id":"https://globimueller.github.io/holzschalen/#schale-013","name":"Schale Nr. 013 – Kirsche","description":"Kirschbaum aus einem Obstgarten, nass gedrechselt und beim Trocknen leicht oval geworden. Das Holz dunkelt im Licht rötlich nach.","material":"Kirsche","image":["https://globimueller.github.io/holzschalen/images/schalen/013/01-1400.webp","https://globimueller.github.io/holzschalen/images/schalen/013/02-1400.webp"],"brand":{"@type":"Brand","name":"[NAME]"},"offers":{"@type":"Offer","url":"https://globimueller.github.io/holzschalen/#schale-013","price":180,"priceCurrency":"CHF","availability":"https://schema.org/InStock","itemCondition":"https://schema.org/NewCondition"}},{"@type":"Product","@id":"https://globimueller.github.io/holzschalen/#schale-011","name":"Schale Nr. 011 – Bergahorn","description":"Kleine, dünnwandige Schale aus fast weissem Bergahorn. Die feine Riegelung zeigt sich erst im Streiflicht.","material":"Bergahorn","image":["https://globimueller.github.io/holzschalen/images/schalen/011/01-1400.webp","https://globimueller.github.io/holzschalen/images/schalen/011/02-1400.webp","https://globimueller.github.io/holzschalen/images/schalen/011/03-1400.webp"],"brand":{"@type":"Brand","name":"[NAME]"},"offers":{"@type":"Offer","url":"https://globimueller.github.io/holzschalen/#schale-011","price":140,"priceCurrency":"CHF","availability":"https://schema.org/InStock","itemCondition":"https://schema.org/NewCondition"}},{"@type":"Product","@id":"https://globimueller.github.io/holzschalen/#schale-010","name":"Schale Nr. 010 – Ulme","description":"Ulme ist selten geworden. Dieses Stück stammt von einem Baum, der dem Ulmensterben zum Opfer fiel, und zeigt die typische gefiederte Zeichnung.","material":"Ulme","image":["https://globimueller.github.io/holzschalen/images/schalen/010/01-1400.webp","https://globimueller.github.io/holzschalen/images/schalen/010/02-1400.webp"],"brand":{"@type":"Brand","name":"[NAME]"},"offers":{"@type":"Offer","url":"https://globimueller.github.io/holzschalen/#schale-010","price":260,"priceCurrency":"CHF","availability":"https://schema.org/InStock","itemCondition":"https://schema.org/NewCondition"}},{"@type":"Product","@id":"https://globimueller.github.io/holzschalen/#schale-008","name":"Schale Nr. 008 – Birnbaum","description":"Flache Schale aus dichtem, gleichmässigem Birnbaumholz. Die Oberfläche ist so fein, dass sie fast ohne Poren auskommt.","material":"Birnbaum","image":["https://globimueller.github.io/holzschalen/images/schalen/008/01-1400.webp","https://globimueller.github.io/holzschalen/images/schalen/008/02-1400.webp"],"brand":{"@type":"Brand","name":"[NAME]"},"offers":{"@type":"Offer","url":"https://globimueller.github.io/holzschalen/#schale-008","price":170,"priceCurrency":"CHF","availability":"https://schema.org/InStock","itemCondition":"https://schema.org/NewCondition"}}]}</script>
+  <!-- JSONLD:ENDE -->
 </head>
 <body>
   <a class="sprung" href="#inhalt">Zum Inhalt</a>
@@ -59,11 +64,93 @@
       </ul>
     </nav>
 
+    <p class="vh" id="feed-status" role="status"></p>
+
     <div class="feed" id="feed"></div>
 
+    <!-- Ohne JavaScript: fest eingebetteter Feed, ohne Filter und Bildfolge -->
     <noscript>
-      <!-- ENTWURF -->
-      <p class="text">Die Übersicht der Schalen braucht JavaScript. Anfragen nehme ich gern per E-Mail entgegen: [EMAIL]</p>
+      <!-- FEED:START (erzeugt von scripts/feed-einbetten.py, nicht von Hand ändern) -->
+      <div class="feed">
+        <article class="schale">
+        <div class="bildfolge"><img src="images/schalen/014/01-800.webp" srcset="images/schalen/014/01-800.webp 800w, images/schalen/014/01-1400.webp 1400w, images/schalen/014/01-2000.webp 2000w" sizes="(min-width: 900px) 40vw, (min-width: 560px) and (min-aspect-ratio: 4/3) 40vw, 100vw" width="800" height="1000" loading="lazy" alt="Dunkle Nussbaumschale von der Seite auf hellem Grund"></div>
+        <div class="angaben">
+        <h2>Schale Nr. 014</h2>
+        <p class="legende">Aussenform nach dem zweiten Ölen</p>
+        <p class="beschrieb">Weite Schale aus dem Stamm eines alten Hofbaums. Der Übergang vom hellen Splint zum dunklen Kern läuft quer durch die Schale.</p>
+        <dl class="daten"><div><dt>Holz</dt><dd>Nussbaum</dd></div><div><dt>Herkunft</dt><dd>Domleschg, Graubünden</dd></div><div><dt>Masse</dt><dd>Ø 28 × H 9 cm</dd></div><div><dt>Preis</dt><dd>CHF 240</dd></div><div><dt>Status</dt><dd>verfügbar</dd></div></dl>
+        <a class="anfragen" href="mailto:%5BEMAIL%5D?subject=Anfrage%20Schale%20Nr.%20014%20%E2%80%93%20Nussbaum&amp;body=Guten%20Tag%0D%0A%0D%0AIch%20interessiere%20mich%20f%C3%BCr%20die%20Schale%20Nr.%20014%20%28Nussbaum%2C%20%C3%98%2028%20%C3%97%20H%209%20cm%2C%20CHF%20240%29.%0D%0A%0D%0AName%3A%0D%0ALieferadresse%3A%0D%0AAbholung%20oder%20Versand%3A%0D%0A%0D%0AFreundliche%20Gr%C3%BCsse">Anfragen +</a>
+        </div>
+        </article>
+        <article class="schale">
+        <div class="bildfolge"><img src="images/schalen/013/01-800.webp" srcset="images/schalen/013/01-800.webp 800w, images/schalen/013/01-1400.webp 1400w, images/schalen/013/01-2000.webp 2000w" sizes="(min-width: 900px) 40vw, (min-width: 560px) and (min-aspect-ratio: 4/3) 40vw, 100vw" width="800" height="1000" loading="lazy" alt="Rötliche Kirschholzschale von der Seite auf hellem Grund"></div>
+        <div class="angaben">
+        <h2>Schale Nr. 013</h2>
+        <p class="legende">Nass gedrechselt, leicht oval getrocknet</p>
+        <p class="beschrieb">Kirschbaum aus einem Obstgarten, nass gedrechselt und beim Trocknen leicht oval geworden. Das Holz dunkelt im Licht rötlich nach.</p>
+        <dl class="daten"><div><dt>Holz</dt><dd>Kirsche</dd></div><div><dt>Herkunft</dt><dd>Maienfeld, Bündner Herrschaft</dd></div><div><dt>Masse</dt><dd>Ø 22 × H 8 cm</dd></div><div><dt>Preis</dt><dd>CHF 180</dd></div><div><dt>Status</dt><dd>verfügbar</dd></div></dl>
+        <a class="anfragen" href="mailto:%5BEMAIL%5D?subject=Anfrage%20Schale%20Nr.%20013%20%E2%80%93%20Kirsche&amp;body=Guten%20Tag%0D%0A%0D%0AIch%20interessiere%20mich%20f%C3%BCr%20die%20Schale%20Nr.%20013%20%28Kirsche%2C%20%C3%98%2022%20%C3%97%20H%208%20cm%2C%20CHF%20180%29.%0D%0A%0D%0AName%3A%0D%0ALieferadresse%3A%0D%0AAbholung%20oder%20Versand%3A%0D%0A%0D%0AFreundliche%20Gr%C3%BCsse">Anfragen +</a>
+        </div>
+        </article>
+        <article class="schale ist-verkauft">
+        <div class="bildfolge"><img src="images/schalen/012/01-800.webp" srcset="images/schalen/012/01-800.webp 800w, images/schalen/012/01-1400.webp 1400w, images/schalen/012/01-2000.webp 2000w" sizes="(min-width: 900px) 40vw, (min-width: 560px) and (min-aspect-ratio: 4/3) 40vw, 100vw" width="800" height="1000" loading="lazy" alt="Helle Eschenschale von der Seite auf hellem Grund"></div>
+        <div class="angaben">
+        <h2>Schale Nr. 012</h2>
+        <p class="legende">Fertig geölt, vor dem Verpacken</p>
+        <p class="beschrieb">Grosse Schale aus heller Esche mit kräftig gezeichneten Jahrringen. Gedacht für Brot oder Obst.</p>
+        <dl class="daten"><div><dt>Holz</dt><dd>Esche</dd></div><div><dt>Herkunft</dt><dd>Safiental, Graubünden</dd></div><div><dt>Masse</dt><dd>Ø 32 × H 11 cm</dd></div><div><dt>Preis</dt><dd>verkauft</dd></div></dl>
+        </div>
+        </article>
+        <article class="schale">
+        <div class="bildfolge"><img src="images/schalen/011/01-800.webp" srcset="images/schalen/011/01-800.webp 800w, images/schalen/011/01-1400.webp 1400w, images/schalen/011/01-2000.webp 2000w" sizes="(min-width: 900px) 40vw, (min-width: 560px) and (min-aspect-ratio: 4/3) 40vw, 100vw" width="800" height="1000" loading="lazy" alt="Helle Ahornschale von der Seite auf hellem Grund"></div>
+        <div class="angaben">
+        <h2>Schale Nr. 011</h2>
+        <p class="legende">Wandstärke vier Millimeter</p>
+        <p class="beschrieb">Kleine, dünnwandige Schale aus fast weissem Bergahorn. Die feine Riegelung zeigt sich erst im Streiflicht.</p>
+        <dl class="daten"><div><dt>Holz</dt><dd>Bergahorn</dd></div><div><dt>Herkunft</dt><dd>Surselva, Graubünden</dd></div><div><dt>Masse</dt><dd>Ø 18 × H 7 cm</dd></div><div><dt>Preis</dt><dd>CHF 140</dd></div><div><dt>Status</dt><dd>verfügbar</dd></div></dl>
+        <a class="anfragen" href="mailto:%5BEMAIL%5D?subject=Anfrage%20Schale%20Nr.%20011%20%E2%80%93%20Bergahorn&amp;body=Guten%20Tag%0D%0A%0D%0AIch%20interessiere%20mich%20f%C3%BCr%20die%20Schale%20Nr.%20011%20%28Bergahorn%2C%20%C3%98%2018%20%C3%97%20H%207%20cm%2C%20CHF%20140%29.%0D%0A%0D%0AName%3A%0D%0ALieferadresse%3A%0D%0AAbholung%20oder%20Versand%3A%0D%0A%0D%0AFreundliche%20Gr%C3%BCsse">Anfragen +</a>
+        </div>
+        </article>
+        <article class="schale">
+        <div class="bildfolge"><img src="images/schalen/010/01-800.webp" srcset="images/schalen/010/01-800.webp 800w, images/schalen/010/01-1400.webp 1400w, images/schalen/010/01-2000.webp 2000w" sizes="(min-width: 900px) 40vw, (min-width: 560px) and (min-aspect-ratio: 4/3) 40vw, 100vw" width="800" height="1000" loading="lazy" alt="Braune Ulmenschale von der Seite auf hellem Grund"></div>
+        <div class="angaben">
+        <h2>Schale Nr. 010</h2>
+        <p class="legende">Nach dem Fertigdrehen, noch ungeölt</p>
+        <p class="beschrieb">Ulme ist selten geworden. Dieses Stück stammt von einem Baum, der dem Ulmensterben zum Opfer fiel, und zeigt die typische gefiederte Zeichnung.</p>
+        <dl class="daten"><div><dt>Holz</dt><dd>Ulme</dd></div><div><dt>Herkunft</dt><dd>Churer Rheintal, Graubünden</dd></div><div><dt>Masse</dt><dd>Ø 26 × H 10 cm</dd></div><div><dt>Preis</dt><dd>CHF 260</dd></div><div><dt>Status</dt><dd>verfügbar</dd></div></dl>
+        <a class="anfragen" href="mailto:%5BEMAIL%5D?subject=Anfrage%20Schale%20Nr.%20010%20%E2%80%93%20Ulme&amp;body=Guten%20Tag%0D%0A%0D%0AIch%20interessiere%20mich%20f%C3%BCr%20die%20Schale%20Nr.%20010%20%28Ulme%2C%20%C3%98%2026%20%C3%97%20H%2010%20cm%2C%20CHF%20260%29.%0D%0A%0D%0AName%3A%0D%0ALieferadresse%3A%0D%0AAbholung%20oder%20Versand%3A%0D%0A%0D%0AFreundliche%20Gr%C3%BCsse">Anfragen +</a>
+        </div>
+        </article>
+        <article class="schale ist-verkauft">
+        <div class="bildfolge"><img src="images/schalen/009/01-800.webp" srcset="images/schalen/009/01-800.webp 800w, images/schalen/009/01-1400.webp 1400w, images/schalen/009/01-2000.webp 2000w" sizes="(min-width: 900px) 40vw, (min-width: 560px) and (min-aspect-ratio: 4/3) 40vw, 100vw" width="800" height="1000" loading="lazy" alt="Helle Arvenschale von der Seite auf hellem Grund"></div>
+        <div class="angaben">
+        <h2>Schale Nr. 009</h2>
+        <p class="legende">Gewachst, nicht geölt</p>
+        <p class="beschrieb">Leichte Schale aus Arvenholz mit eingewachsenen dunklen Ästen. Sie duftet noch lange nach Harz.</p>
+        <dl class="daten"><div><dt>Holz</dt><dd>Arve</dd></div><div><dt>Herkunft</dt><dd>Oberengadin, Graubünden</dd></div><div><dt>Masse</dt><dd>Ø 24 × H 8 cm</dd></div><div><dt>Preis</dt><dd>verkauft</dd></div></dl>
+        </div>
+        </article>
+        <article class="schale">
+        <div class="bildfolge"><img src="images/schalen/008/01-800.webp" srcset="images/schalen/008/01-800.webp 800w, images/schalen/008/01-1400.webp 1400w, images/schalen/008/01-2000.webp 2000w" sizes="(min-width: 900px) 40vw, (min-width: 560px) and (min-aspect-ratio: 4/3) 40vw, 100vw" width="800" height="1000" loading="lazy" alt="Flache, rosabraune Birnbaumschale von der Seite auf hellem Grund"></div>
+        <div class="angaben">
+        <h2>Schale Nr. 008</h2>
+        <p class="legende">Flache Form mit schmalem Fuss</p>
+        <p class="beschrieb">Flache Schale aus dichtem, gleichmässigem Birnbaumholz. Die Oberfläche ist so fein, dass sie fast ohne Poren auskommt.</p>
+        <dl class="daten"><div><dt>Holz</dt><dd>Birnbaum</dd></div><div><dt>Herkunft</dt><dd>Domleschg, Graubünden</dd></div><div><dt>Masse</dt><dd>Ø 20 × H 6 cm</dd></div><div><dt>Preis</dt><dd>CHF 170</dd></div><div><dt>Status</dt><dd>verfügbar</dd></div></dl>
+        <a class="anfragen" href="mailto:%5BEMAIL%5D?subject=Anfrage%20Schale%20Nr.%20008%20%E2%80%93%20Birnbaum&amp;body=Guten%20Tag%0D%0A%0D%0AIch%20interessiere%20mich%20f%C3%BCr%20die%20Schale%20Nr.%20008%20%28Birnbaum%2C%20%C3%98%2020%20%C3%97%20H%206%20cm%2C%20CHF%20170%29.%0D%0A%0D%0AName%3A%0D%0ALieferadresse%3A%0D%0AAbholung%20oder%20Versand%3A%0D%0A%0D%0AFreundliche%20Gr%C3%BCsse">Anfragen +</a>
+        </div>
+        </article>
+        <article class="schale ist-verkauft">
+        <div class="bildfolge"><img src="images/schalen/007/01-800.webp" srcset="images/schalen/007/01-800.webp 800w, images/schalen/007/01-1400.webp 1400w, images/schalen/007/01-2000.webp 2000w" sizes="(min-width: 900px) 40vw, (min-width: 560px) and (min-aspect-ratio: 4/3) 40vw, 100vw" width="800" height="1000" loading="lazy" alt="Tiefe Eichenschale von der Seite auf hellem Grund"></div>
+        <div class="angaben">
+        <h2>Schale Nr. 007</h2>
+        <p class="legende">Ein Jahr getrocknet, dann fertig gedreht</p>
+        <p class="beschrieb">Schwere, tiefe Schale aus Eiche mit sichtbaren Markstrahlen. Ein Trocknungsriss am Rand wurde belassen.</p>
+        <dl class="daten"><div><dt>Holz</dt><dd>Eiche</dd></div><div><dt>Herkunft</dt><dd>Fläsch, Bündner Herrschaft</dd></div><div><dt>Masse</dt><dd>Ø 30 × H 12 cm</dd></div><div><dt>Preis</dt><dd>verkauft</dd></div></dl>
+        </div>
+        </article>
+      </div>
+      <!-- FEED:ENDE -->
     </noscript>
   </main>
 

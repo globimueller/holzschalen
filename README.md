@@ -15,7 +15,7 @@ Reines HTML, CSS und JavaScript, kein Build-Schritt, keine externen Abhängigkei
 | `css/style.css` | Gestaltung; Farben und Schriften als Variablen ganz oben |
 | `js/config.js` | Basis-URL, Name und E-Mail-Adresse |
 | `fonts/` | Selbst gehostete Schriften mit Lizenztexten |
-| `scripts/` | Hilfsskripte für Bilder und Domainwechsel |
+| `scripts/` | Hilfsskripte für Bilder, Feed-Einbettung und Domainwechsel |
 | `originale/` | Originalfotos, werden nicht veröffentlicht (`.gitignore`) |
 
 ## Vor der Veröffentlichung: Platzhalter ersetzen
@@ -26,6 +26,8 @@ Im ganzen Projekt suchen und ersetzen (z. B. im Editor mit «In Dateien suchen»
 - `[EMAIL]` – E-Mail-Adresse für Anfragen
 - `[ADRESSE]` – Postadresse für Impressum und Datenschutz
 - `https://BENUTZERNAME.github.io/REPO/` – siehe «Basis-URL» unten
+
+Danach einmal `python3 scripts/feed-einbetten.py` ausführen, damit auch der fest eingebettete Feed die neuen Angaben erhält.
 
 Alle Textentwürfe sind im Code mit `<!-- ENTWURF -->` markiert. Impressum und Datenschutzerklärung sind Entwürfe und sollten vor der Veröffentlichung geprüft werden. Die Beispiel-Schalen und ihre Bilder sind Platzhalter.
 
@@ -69,11 +71,33 @@ Dann im Browser `http://localhost:8000/` öffnen. Ein Doppelklick auf `index.htm
    - `datei` nennt nur die Bildnummer: Aus `01.webp` werden automatisch `01-800.webp`, `01-1400.webp` und `01-2000.webp` geladen.
    - `alt` beschreibt das Bild für Menschen, die es nicht sehen. `legende` erscheint kursiv unter dem Titel.
    - Zwischen den Einträgen steht ein Komma, nach dem letzten keines.
-5. **Lokal ansehen**, dann committen und pushen.
+5. **Prüfen und einbetten:**
+   ```bash
+   python3 scripts/feed-einbetten.py
+   ```
+   Das Skript meldet Tippfehler und fehlende Bilder und schreibt den Feed fest in `index.html` (siehe «Feed einbetten»).
+6. **Lokal ansehen**, dann committen und pushen.
 
 ## Schale als verkauft markieren
 
-In `data/schalen.json` beim Eintrag `"status": "verfuegbar"` auf `"status": "verkauft"` ändern, committen, pushen. Die Schale bleibt im Feed sichtbar, der Preis wird durch «verkauft» ersetzt, der Anfrage-Link verschwindet.
+In `data/schalen.json` beim Eintrag `"status": "verfuegbar"` auf `"status": "verkauft"` ändern, `python3 scripts/feed-einbetten.py` ausführen, committen, pushen. Die Schale bleibt im Feed sichtbar, der Preis wird durch «verkauft» ersetzt, der Anfrage-Link verschwindet.
+
+## Feed einbetten
+
+Nach jeder Änderung an `data/schalen.json`:
+
+```bash
+python3 scripts/feed-einbetten.py
+```
+
+Das Skript braucht nur Python 3 und macht vier Dinge:
+
+- Es prüft `schalen.json` auf fehlende Felder, Tippfehler beim Status, doppelte Nummern und fehlende Bilddateien.
+- Es schreibt alle Schalen als festes HTML in `index.html`. Besucher ohne JavaScript und Suchmaschinen sehen so den ganzen Feed (ohne Filter und Bildfolge).
+- Es schreibt die strukturierten Daten der verfügbaren Schalen fest in `index.html`.
+- Es trägt das Datum der neuesten Schale in `sitemap.xml` ein.
+
+Mit `--pruefen` wird nur geprüft und nichts geschrieben. Geht das Skript einmal vergessen, funktioniert die Seite trotzdem: Im Browser wird der Feed weiterhin aus `schalen.json` aufgebaut, veraltet sind dann nur die Ansicht ohne JavaScript und die strukturierten Daten.
 
 ## Bilder optimieren
 
