@@ -22,7 +22,7 @@ Reines HTML, CSS und JavaScript, kein Build-Schritt, keine externen Abhängigkei
 
 Im ganzen Projekt suchen und ersetzen (z. B. im Editor mit «In Dateien suchen»):
 
-- `[NAME]` – Name der Drechslerin / des Drechslers
+- `[NAME]` – voller Name für Impressum und Datenschutz in `kontakt.html` (die Seite selbst heisst «Laurin», festgelegt in `js/config.js` und in den Seitentiteln)
 - `[EMAIL]` – E-Mail-Adresse für Anfragen
 - `[ADRESSE]` – Postadresse für Impressum und Datenschutz
 - `https://BENUTZERNAME.github.io/REPO/` – siehe «Basis-URL» unten

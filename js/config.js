@@ -5,6 +5,6 @@ document.documentElement.classList.add("js");
 
 window.SITE = {
   basisUrl: "https://globimueller.github.io/holzschalen/",
-  name: "[NAME]",
+  name: "Laurin",
   email: "[EMAIL]"
 };
