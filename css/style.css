@@ -46,6 +46,10 @@
   /* Masse */
   --rand: clamp(1.25rem, 4vw, 3rem);
   --dauer: 180ms;
+
+  /* Bildhöhe: Das Hochformat passt samt Kopf ins Fenster.
+     In niedrigen Fenstern (Handy quer) mindestens 70 % der Fensterhöhe. */
+  --bildhoehe: max(70vh, min(86vh, 100vh - 14rem));
 }
 
 *,
@@ -256,7 +260,11 @@ a:hover {
 
 .feed {
   padding: 0 var(--rand);
-  min-height: 100vh; /* hält den Fuss aus dem Bild, bis der Feed geladen ist */
+}
+
+/* Hält den Fuss aus dem Bild, bis der Feed geladen ist (nur mit JavaScript) */
+.js #feed {
+  min-height: 100vh;
 }
 
 .schale {
@@ -279,6 +287,11 @@ a:hover {
   color: inherit;
   cursor: pointer;
   touch-action: pan-y;
+}
+
+/* Das Bild wird nie höher als das Fenster, auch einspaltig */
+.bildfolge {
+  max-width: calc(var(--bildhoehe) * 0.8);
 }
 
 .bildfolge img {
@@ -365,17 +378,14 @@ a:hover {
   color: var(--leise);
 }
 
-@media (min-width: 900px) {
+/* Zweispaltig ab 900 px Breite und in querformatigen Fenstern (z. B. Handy quer).
+   Die Bildspalte ist so breit wie das Bild, der Text schliesst direkt an. */
+@media (min-width: 900px), (min-width: 560px) and (min-aspect-ratio: 4/3) {
   .schale {
     display: grid;
-    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-    column-gap: clamp(2rem, 5vw, 5rem);
+    grid-template-columns: min(calc(var(--bildhoehe) * 0.8), 58%) minmax(0, 1fr);
+    column-gap: clamp(1.5rem, 4vw, 4.5rem);
     align-items: end;
-  }
-
-  /* Das Hochformat soll ganz in die Fensterhöhe passen */
-  .bildfolge {
-    max-width: calc(86vh * 0.8);
   }
 
   .angaben h2 {
@@ -389,6 +399,17 @@ a:hover {
   /* Angaben schliessen mit der Bildunterkante ab, der Zähler steht darunter */
   .schale:has(.zaehler) .angaben {
     padding-bottom: 1.725rem;
+  }
+}
+
+/* In niedrigen Fenstern ist der Text höher als das Bild: beide oben ausrichten */
+@media (max-height: 699px) {
+  .schale {
+    align-items: start;
+  }
+
+  .schale:has(.zaehler) .angaben {
+    padding-bottom: 0;
   }
 }
 
@@ -472,6 +493,66 @@ a:hover {
 
 .fuss a:hover {
   color: var(--akzent);
+}
+
+/* ---------- Anfrage ohne Mailprogramm ---------- */
+
+.anfrage-alternative {
+  margin: 0.6rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--leise);
+}
+
+.kopieren {
+  padding: 0.25rem 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--akzent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+  transition: color var(--dauer);
+}
+
+.kopieren:hover {
+  color: var(--text);
+}
+
+/* ---------- Silbentrennung für lange Wörter auf schmalen Bildschirmen ---------- */
+
+.text p,
+.text li,
+.beschrieb {
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+/* ---------- Druck ---------- */
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  .menue,
+  .menue-knopf,
+  .filter,
+  .sprung,
+  .zaehler,
+  .anfrage-alternative {
+    display: none !important;
+  }
+
+  .schale {
+    break-inside: avoid;
+  }
+
+  .ist-verkauft .bildfolge img {
+    opacity: 1;
+  }
 }
 
 /* ---------- Weniger Bewegung ---------- */
