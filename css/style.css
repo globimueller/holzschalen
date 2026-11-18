@@ -1,0 +1,460 @@
+/* ==========================================================================
+   Gedrechselte Holzschalen – Gestaltung
+   Farben und Schriften hier oben anpassen.
+   ========================================================================== */
+
+:root {
+  /* Farben */
+  --grund: #F4F0E8;        /* Hintergrund, warmes Kalkweiss */
+  --text: #2E2A25;         /* Schrift, dunkles Braun-Grau */
+  --leise: #6B6258;        /* Sekundärtext (Kontrast AA auf --grund) */
+  --linie: #8C8377;        /* Linien und Zierelemente, nicht für kleinen Text */
+  --linie-zart: #D8D1C4;   /* Haarlinien zwischen Einträgen */
+  --akzent: #85583D;       /* Links und Hover (Kontrast AA auf --grund) */
+  --bildgrund: #E6DFD2;    /* Fläche, solange ein Bild lädt */
+
+  /* Schriften */
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --grotesk: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+
+  /* Masse */
+  --rand: clamp(1.25rem, 4vw, 3rem);
+  --dauer: 180ms;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--grund);
+  color: var(--text);
+  font-family: var(--grotesk);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+body.menue-offen {
+  overflow: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--akzent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color var(--dauer);
+}
+
+a:hover {
+  color: var(--text);
+}
+
+:focus-visible {
+  outline: 2px solid var(--akzent);
+  outline-offset: 3px;
+}
+
+.vh {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sprung {
+  position: absolute;
+  left: -999rem;
+  top: 0.5rem;
+  z-index: 30;
+  padding: 0.5rem 0.75rem;
+  background: var(--grund);
+}
+
+.sprung:focus {
+  left: var(--rand);
+}
+
+/* ---------- Kopf und Navigation ---------- */
+
+.kopf {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  padding: 1.25rem var(--rand);
+}
+
+.wortmarke {
+  position: relative;
+  z-index: 22;
+  padding: 0.25rem 0;
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  letter-spacing: 0.01em;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.menue ul {
+  display: flex;
+  gap: 1.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menue a {
+  display: inline-block;
+  padding: 0.25rem 0;
+  font-size: 0.875rem;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.menue a:hover {
+  color: var(--akzent);
+}
+
+.menue a[aria-current] {
+  text-decoration: underline;
+}
+
+.menue-knopf {
+  display: none;
+  position: relative;
+  z-index: 22;
+  padding: 0.5rem 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 0.875rem;
+  color: var(--text);
+  cursor: pointer;
+}
+
+@media (max-width: 699px) {
+  .js .menue-knopf {
+    display: block;
+  }
+
+  .js .menue {
+    position: fixed;
+    inset: 0;
+    z-index: 21;
+    display: flex;
+    align-items: center;
+    padding: var(--rand);
+    background: var(--grund);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--dauer), visibility var(--dauer);
+  }
+
+  .js .menue.ist-offen {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .js .menue ul {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .js .menue a {
+    font-family: var(--serif);
+    font-size: 2rem;
+    line-height: 1.3;
+  }
+}
+
+/* ---------- Filter ---------- */
+
+.filter {
+  padding: 1.5rem var(--rand) 0;
+  font-size: 0.875rem;
+  color: var(--leise);
+}
+
+.filter ul {
+  display: flex;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.filter li + li::before {
+  content: "·";
+  margin-right: 0.6rem;
+}
+
+.filter a {
+  display: inline-block;
+  padding: 0.4rem 0;
+  color: var(--leise);
+  text-decoration: none;
+}
+
+.filter a:hover {
+  color: var(--akzent);
+}
+
+.filter a[aria-current] {
+  color: var(--text);
+  text-decoration: underline;
+}
+
+/* ---------- Feed ---------- */
+
+.feed {
+  padding: 0 var(--rand);
+  min-height: 60vh;
+}
+
+.schale {
+  padding: clamp(2.5rem, 7vw, 6rem) 0;
+  border-top: 1px solid var(--linie-zart);
+  scroll-margin-top: 1rem;
+}
+
+.schale:first-child {
+  border-top: 0;
+  padding-top: clamp(1.5rem, 4vw, 3rem);
+}
+
+.bild-knopf {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  touch-action: pan-y;
+}
+
+.bildfolge img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background: var(--bildgrund);
+  transition: opacity var(--dauer);
+}
+
+.ist-verkauft .bildfolge img {
+  opacity: 0.55;
+}
+
+.bildfolge.wechselt img {
+  opacity: 0;
+}
+
+.zaehler {
+  margin: 0.6rem 0 0;
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+  color: var(--leise);
+}
+
+.angaben h2 {
+  margin: 1.25rem 0 0.25rem;
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.legende {
+  min-height: 1.65em;
+  margin: 0 0 1rem;
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--leise);
+}
+
+.beschrieb {
+  max-width: 34em;
+  margin: 0 0 1.25rem;
+}
+
+.daten {
+  max-width: 22rem;
+  margin: 0 0 1.25rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.daten div {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  padding: 0.3rem 0;
+  border-top: 1px solid var(--linie-zart);
+}
+
+.daten div:last-child {
+  border-bottom: 1px solid var(--linie-zart);
+}
+
+.daten dt {
+  color: var(--leise);
+}
+
+.daten dd {
+  margin: 0;
+}
+
+.anfragen {
+  display: inline-block;
+  padding: 0.4rem 0;
+  font-size: 0.875rem;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+
+.meldung {
+  padding: 4rem 0;
+  color: var(--leise);
+}
+
+@media (min-width: 900px) {
+  .schale {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    column-gap: clamp(2rem, 5vw, 5rem);
+    align-items: end;
+  }
+
+  /* Das Hochformat soll ganz in die Fensterhöhe passen */
+  .bildfolge {
+    max-width: calc(86vh * 0.8);
+  }
+
+  .angaben h2 {
+    margin-top: 0;
+  }
+
+  .angaben > :last-child {
+    margin-bottom: 0;
+  }
+
+  /* Angaben schliessen mit der Bildunterkante ab, der Zähler steht darunter */
+  .schale:has(.zaehler) .angaben {
+    padding-bottom: 1.725rem;
+  }
+}
+
+/* ---------- Textseiten ---------- */
+
+.text {
+  max-width: calc(40rem + 2 * var(--rand));
+  padding: clamp(2rem, 6vw, 5rem) var(--rand);
+}
+
+.text h1 {
+  margin: 0 0 2rem;
+  font-family: var(--serif);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.text h2 {
+  margin: 2.75rem 0 0.5rem;
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.text h3 {
+  margin: 1.75rem 0 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.text p,
+.text ul,
+.text address {
+  margin: 0 0 1rem;
+}
+
+.text ul {
+  padding-left: 1.1rem;
+}
+
+.text address {
+  font-style: normal;
+}
+
+.text .einstieg {
+  font-family: var(--serif);
+  font-size: 1.1875rem;
+  line-height: 1.5;
+}
+
+.text .klein {
+  font-size: 0.8125rem;
+  color: var(--leise);
+}
+
+/* ---------- Fuss ---------- */
+
+.fuss {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  margin-top: 3rem;
+  padding: 1.5rem var(--rand) 2rem;
+  border-top: 1px solid var(--linie-zart);
+  font-size: 0.8125rem;
+  color: var(--leise);
+}
+
+.fuss p {
+  margin: 0;
+}
+
+.fuss a {
+  display: inline-block;
+  padding: 0.25rem 0;
+  color: var(--leise);
+}
+
+.fuss a:hover {
+  color: var(--akzent);
+}
+
+/* ---------- Weniger Bewegung ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
