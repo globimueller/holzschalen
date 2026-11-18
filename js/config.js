@@ -4,7 +4,7 @@
 document.documentElement.classList.add("js");
 
 window.SITE = {
-  basisUrl: "https://BENUTZERNAME.github.io/REPO/",
+  basisUrl: "https://globimueller.github.io/holzschalen/",
   name: "[NAME]",
   email: "[EMAIL]"
 };
